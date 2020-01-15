@@ -1,0 +1,10 @@
+proc points_forces_script {name} {
+	set ok [catch {set ok [source ~/.points_forces/$name]}]
+	if {$ok > 0} {
+		catch {beep}
+		puts "Cannot open ~/.points_forces/$name!"
+		puts "Does the configuration directory exist?"
+		return 1
+	}
+	return 0
+}
