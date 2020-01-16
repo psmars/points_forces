@@ -1,7 +1,7 @@
-FROM absps/debian
+FROM absps/debian_base
 MAINTAINER Pierre SMARS
-LABEL tw.edu.yuntech.smars.version="0.2-beta" \
-      tw.edu.yuntech.smars.release-date="2020-01-15"
+LABEL tw.edu.yuntech.smars.version="0.3" \
+      tw.edu.yuntech.smars.release-date="2020-01-16"
 USER root
 WORKDIR /root
 RUN apt-get update && \
