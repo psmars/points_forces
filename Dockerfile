@@ -1,9 +1,10 @@
 FROM absps/debian_base
 MAINTAINER Pierre SMARS
-LABEL tw.edu.yuntech.smars.version="0.3" \
-      tw.edu.yuntech.smars.release-date="2020-01-16"
+LABEL tw.edu.yuntech.smars.version="0.4" \
+      tw.edu.yuntech.smars.release-date="2020-01-17"
 USER root
 WORKDIR /root
+
 RUN apt-get update && \
 	apt-get install -y \
 	gcc \
@@ -17,9 +18,11 @@ RUN apt-get update && \
 	tk-dev \
 	swig3.0 \
 	libvtk6.3 \
-	libvtk6-dev
+	libvtk6-dev \
+	gphoto2
 
 RUN git clone https://git.code.sf.net/p/pointsforces/code src
+
 RUN git clone https://github.com/vxl/vxl.git && \
 	cp /root/src/core/scripts/man2cxx /usr/local/bin && \
 	cd /root/src/core && \
@@ -41,10 +44,14 @@ RUN /root/src/utils/preparetcl
 
 ENV TCLLIBPATH=/usr/local/lib/points_forces
 
-COPY .points_forcesrc /root
-COPY .tclshrc /root
-COPY .wishrc /root
+COPY .points_forcesrc \ 
+	.tclshrc \
+	.wishrc \
+	/root/
+
 RUN ln -s /usr/local/share/points_forces/scripts /root/.points_forces
+
+EXPOSE 9000-9100
 
 CMD /bin/zsh
 
