@@ -1,7 +1,7 @@
-FROM absps/debian_base
+FROM absps/debian_base:latest
 MAINTAINER Pierre SMARS
-LABEL tw.edu.yuntech.smars.version="0.4" \
-      tw.edu.yuntech.smars.release-date="2020-01-17"
+LABEL tw.edu.yuntech.smars.version="0.5" \
+      tw.edu.yuntech.smars.release-date="2020-01-18"
 USER root
 WORKDIR /root
 
