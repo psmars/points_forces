@@ -1,7 +1,7 @@
 FROM absps/debian_base:latest
 MAINTAINER Pierre SMARS
-LABEL tw.edu.yuntech.smars.version="0.5" \
-      tw.edu.yuntech.smars.release-date="2020-01-18"
+LABEL tw.edu.yuntech.smars.version="0.6" \
+      tw.edu.yuntech.smars.release-date="2020-06-10"
 USER root
 WORKDIR /root
 
@@ -17,8 +17,8 @@ RUN apt-get update && \
 	tk \
 	tk-dev \
 	swig3.0 \
-	libvtk6.3 \
-	libvtk6-dev \
+	libvtk7.1 \
+	libvtk7-dev \
 	gphoto2
 
 RUN git clone https://git.code.sf.net/p/pointsforces/code src
