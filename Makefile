@@ -6,3 +6,7 @@ run:
 
 push:
 	docker push absps/points_forces
+
+clean:
+	rm -rf *~
+
