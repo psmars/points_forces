@@ -1,7 +1,7 @@
 FROM absps/debian_base:latest
 MAINTAINER Pierre SMARS
-LABEL tw.edu.yuntech.smars.version="0.6" \
-      tw.edu.yuntech.smars.release-date="2020-06-10"
+LABEL tw.edu.yuntech.smars.version="0.8" \
+      tw.edu.yuntech.smars.release-date="2022-03-19"
 USER root
 WORKDIR /root
 
@@ -16,9 +16,9 @@ RUN apt-get update && \
 	tcl-tclreadline \
 	tk \
 	tk-dev \
-	swig3.0 \
-	libvtk7.1 \
-	libvtk7-dev \
+	swig \
+	libvtk9 \
+	libvtk9-dev \
 	gphoto2
 
 RUN git clone https://git.code.sf.net/p/pointsforces/code src
@@ -53,5 +53,5 @@ RUN ln -s /usr/local/share/points_forces/scripts /root/.points_forces
 
 EXPOSE 9000-9100
 
-CMD /bin/zsh
-
+CMD /usr/share/absps/config/install && \
+  /usr/bin/zsh
