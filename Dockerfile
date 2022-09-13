@@ -1,7 +1,7 @@
 FROM absps/debian_base:latest
 MAINTAINER Pierre SMARS
-LABEL tw.edu.yuntech.smars.version="0.8" \
-      tw.edu.yuntech.smars.release-date="2022-03-19"
+LABEL tw.edu.yuntech.smars.version="0.10" \
+      tw.edu.yuntech.smars.release-date="2022-09-13"
 USER root
 WORKDIR /root
 
@@ -26,7 +26,7 @@ RUN git clone https://git.code.sf.net/p/pointsforces/code src
 RUN git clone https://github.com/vxl/vxl.git && \
 	cp /root/src/core/scripts/man2cxx /usr/local/bin && \
 	cd /root/src/core && \
-	cmake . && \
+	cmake -D CMAKE_BUILD_TYPE=Release . && \
 	make && \
 	make install && \
 	cd /root/vxl && \
@@ -34,7 +34,13 @@ RUN git clone https://github.com/vxl/vxl.git && \
 	make && \
 	make install && \
 	cd /root/src/survey && \
-	cmake -D core_DIR=/usr/local/lib/points_forces . && \
+	cmake -D core_DIR=/usr/local/lib/points_forces -D CMAKE_BUILD_TYPE=Release . && \
+	make && \
+	make install && \
+	cd /root/src/structure/scripts && \
+	wget https://sourceforge.net/projects/pointsforces/files/calipous.png/download -O calipous.png && \
+	cd /root/src/structure && \
+	cmake -D core_DIR=/usr/local/lib/points_forces -D survey_DIR=/usr/local/lib/points_forces -D CMAKE_BUILD_TYPE=Release . && \
 	make && \
 	make install && \
 	cd /root && \
