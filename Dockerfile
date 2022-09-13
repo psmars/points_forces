@@ -1,6 +1,6 @@
 FROM absps/debian_base:latest
 MAINTAINER Pierre SMARS
-LABEL tw.edu.yuntech.smars.version="0.10" \
+LABEL tw.edu.yuntech.smars.version="0.11" \
       tw.edu.yuntech.smars.release-date="2022-09-13"
 USER root
 WORKDIR /root
@@ -50,14 +50,16 @@ RUN /root/src/utils/preparetcl
 
 ENV TCLLIBPATH=/usr/local/lib/points_forces
 
-COPY .points_forcesrc \ 
-	.tclshrc \
-	.wishrc \
-	/root/
+COPY config/.points_forcesrc \ 
+	config/.tclshrc \
+	config/.wishrc \
+	config/installf \
+	/usr/share/absps/config/
 
-RUN ln -s /usr/local/share/points_forces/scripts /root/.points_forces
+RUN chmod 0700 /usr/share/absps/config/installf
 
 EXPOSE 9000-9100
 
 CMD /usr/share/absps/config/install && \
+	/usr/share/absps/config/installf && \
   /usr/bin/zsh

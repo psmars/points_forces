@@ -1,0 +1,13 @@
+#!/bin/zsh
+if test ! -e /root/.tclshrc; then
+	cp /usr/share/absps/config/.tclshrc /root/
+fi
+if test ! -e /root/.wishrc; then
+	cp /usr/share/absps/config/.wishrc /root/
+fi
+if test ! -e /root/.points_forces; then
+	ln -s /usr/local/share/points_forces/scripts /root/.points_forces
+fi
+if test ! -e /root/.points_forcesrc; then
+	cp /usr/share/absps/config/.points_forcesrc /root/
+fi

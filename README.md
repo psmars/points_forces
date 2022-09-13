@@ -13,6 +13,10 @@ I you use GUI applications:
 
 - I use the command:
   `docker run --rm -it -e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix absps/points_forces`
+	(and `xhost +` on the host)
+
+- To set container name and share a directory:
+	`run --rm -it --hostname points_forces -e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix -v <your host directory>:/root absps/points_forces`
 
 ## For Windows
 
